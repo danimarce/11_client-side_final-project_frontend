@@ -1,4 +1,9 @@
-export const BookCard = ({ book }) => {
+export const BookCard = ({ book, setBookId, handleEditButton }) => {
+  const handleBookEdit = () => {
+    handleEditButton();
+    setBookId(book.id);
+  };
+
   return (
     <li>
       <section>
@@ -12,7 +17,7 @@ export const BookCard = ({ book }) => {
         <span>{book.status}</span>
       </section>
       <section>
-        <button>Edit</button>
+        <button onClick={handleBookEdit}>Edit</button>
         <button>Delete</button>
       </section>
     </li>
