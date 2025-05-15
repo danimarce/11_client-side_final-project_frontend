@@ -1,11 +1,18 @@
 const BASE_URL = import.meta.env.VITE_API_URL;
 
-export const BookCard = ({ book, setBookId, handleEditButton }) => {
+export const BookCard = ({
+  book,
+  setBookId,
+  handleEditButton,
+  fetchBooks,
+  setTextSubmitButton,
+}) => {
   const { id, title, author, year, status } = book;
 
   const handleBookEdit = (id) => {
-    handleEditButton();
+    setTextSubmitButton("Update book");
     setBookId(id);
+    handleEditButton();
   };
 
   const handleDeleteButton = (id) => {
@@ -20,8 +27,9 @@ export const BookCard = ({ book, setBookId, handleEditButton }) => {
       .then((response) => {
         return response.json();
       })
-      .then((data) => {
-        console.log(data);
+      .then(() => {
+        alert("Book deleted succesfully!");
+        fetchBooks();
       });
   };
 

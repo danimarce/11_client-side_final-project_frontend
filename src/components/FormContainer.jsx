@@ -2,13 +2,24 @@ import { useEffect, useState } from "react";
 
 const BASE_URL = import.meta.env.VITE_API_URL;
 
-export const FormContainer = ({ id }) => {
-  const [book, setBook] = useState({});
+export const FormContainer = ({
+  bookId,
+  handleTextButton,
+  fetchBooks,
+  textSubmitButton,
+  setTextSubmitButton,
+}) => {
+  const [book, setBook] = useState({
+    title: "",
+    author: "",
+    year: "",
+    status: "pending",
+  });
 
   useEffect(() => {
-    if (id) {
+    if (bookId) {
       globalThis
-        .fetch(`${BASE_URL}/books/${id}`)
+        .fetch(`${BASE_URL}/books/${bookId}`)
         .then((response) => {
           return response.json();
         })
@@ -16,18 +27,20 @@ export const FormContainer = ({ id }) => {
           setBook(data);
         });
     }
-  }, [id]);
+  }, [bookId]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    setTextSubmitButton("Saving...");
+
     const formData = new FormData(event.target);
 
     const formId = formData.get("id");
-    const formTitle = formData.get("title");
-    const formAuthor = formData.get("author");
-    const formYear = formData.get("publicationYear");
-    const formStatus = formData.get("readingStatus");
+    const formTitle = book.title;
+    const formAuthor = book.author;
+    const formYear = book.year;
+    const formStatus = book.status;
 
     const newBook = {
       title: formTitle,
@@ -39,7 +52,12 @@ export const FormContainer = ({ id }) => {
     const urlEndpoint = formId
       ? `${BASE_URL}/books/${formId}`
       : `${BASE_URL}/books`;
+
     const usedMethod = formId ? "PUT" : "POST";
+
+    const alertText = formId
+      ? "Book updated succesfully!"
+      : "Book added succesfully";
 
     globalThis
       .fetch(urlEndpoint, {
@@ -52,8 +70,11 @@ export const FormContainer = ({ id }) => {
       .then((response) => {
         return response.json();
       })
-      .then((data) => {
-        console.log(data);
+      .then(() => {
+        setTextSubmitButton("Add book");
+        handleTextButton();
+        fetchBooks();
+        alert(alertText);
       });
 
     event.target.reset();
@@ -68,7 +89,13 @@ export const FormContainer = ({ id }) => {
           type="text"
           name="title"
           id="title"
-          defaultValue={book.title}
+          value={book.title ?? ""}
+          onChange={(event) =>
+            setBook((prevBook) => ({
+              ...prevBook,
+              title: event.target.value,
+            }))
+          }
           required
         />
       </label>
@@ -78,7 +105,13 @@ export const FormContainer = ({ id }) => {
           type="text"
           name="author"
           id="author"
-          defaultValue={book.author}
+          value={book.author ?? ""}
+          onChange={(event) =>
+            setBook((prevBook) => ({
+              ...prevBook,
+              author: event.target.value,
+            }))
+          }
           required
         />
       </label>
@@ -88,22 +121,34 @@ export const FormContainer = ({ id }) => {
           type="text"
           name="publicationYear"
           id="publicationYear"
-          defaultValue={book.year}
+          value={book.year ?? ""}
+          onChange={(event) =>
+            setBook((prevBook) => ({
+              ...prevBook,
+              year: event.target.value,
+            }))
+          }
           required
         />
       </label>
       <select
         name="readingStatus"
         id="readingStatus"
-        defaultValue={book.status}
+        value={book.status ?? ""}
+        onChange={(event) =>
+          setBook((prevBook) => ({
+            ...prevBook,
+            status: event.target.value,
+          }))
+        }
         required
       >
         <option value="pending">Pending</option>
         <option value="inProgress">In Progress</option>
         <option value="read">Read</option>
       </select>
-      <input type="submit" value="Add Book" />
       <input type="hidden" name="id" defaultValue={book.id} />
+      <input type="submit" value={textSubmitButton} />
     </form>
   );
 };

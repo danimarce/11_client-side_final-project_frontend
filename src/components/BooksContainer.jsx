@@ -1,6 +1,13 @@
 import { BookCard } from "./BookCard";
 
-export const BooksContainer = ({ books, setBookId, handleEditButton }) => {
+export const BooksContainer = ({
+  books,
+  setBookId,
+  handleEditButton,
+  fetchBooks,
+  setTextSubmitButton,
+}) => {
+  
   return (
     <ul>
       {books.map((book) => (
@@ -9,6 +16,8 @@ export const BooksContainer = ({ books, setBookId, handleEditButton }) => {
           book={book}
           setBookId={setBookId}
           handleEditButton={handleEditButton}
+          fetchBooks={fetchBooks}
+          setTextSubmitButton={setTextSubmitButton}
         />
       ))}
     </ul>

@@ -4,14 +4,17 @@ import { HeadingTitle } from "./HeadingTitle";
 import { FormButton } from "./FormButton";
 import { FormContainer } from "./FormContainer";
 
+import { useTextSubmitButton } from "../hooks/useTextSubmitButton.js";
+
 const BASE_URL = import.meta.env.VITE_API_URL;
 
 export const App = () => {
   const [books, setBooks] = useState([]);
   const [bookId, setBookId] = useState(null);
   const [textButton, setTextButton] = useState("Add New Book");
+  const { textSubmitButton, setTextSubmitButton } = useTextSubmitButton(bookId);
 
-  useEffect(() => {
+  const fetchBooks = () => {
     const endpointUrl = `${BASE_URL}/books`;
 
     globalThis
@@ -22,6 +25,10 @@ export const App = () => {
       .then((data) => {
         setBooks(data);
       });
+  };
+
+  useEffect(() => {
+    fetchBooks();
   }, []);
 
   const handleTextButton = () => {
@@ -41,15 +48,26 @@ export const App = () => {
       setTextButton("Cancel");
     }
   };
+
   return (
     <>
       <HeadingTitle title="My Book Collection" />
       <FormButton textButton={textButton} handleClick={handleTextButton} />
-      {(textButton === "Cancel" || bookId) && <FormContainer id={bookId} />}
+      {(textButton === "Cancel" || bookId) && (
+        <FormContainer
+          bookId={bookId}
+          handleTextButton={handleTextButton}
+          fetchBooks={fetchBooks}
+          textSubmitButton={textSubmitButton}
+          setTextSubmitButton={setTextSubmitButton}
+        />
+      )}
       <BooksContainer
         books={books}
         setBookId={setBookId}
         handleEditButton={handleEditButton}
+        fetchBooks={fetchBooks}
+        setTextSubmitButton={setTextSubmitButton}
       />
     </>
   );
