@@ -1,0 +1,65 @@
+.book__card {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #bbb;
+  border-radius: 0.25rem;
+}
+
+.book__card-first-section {
+  border-bottom: 1px solid #bbb;
+  padding-bottom: 1rem;
+}
+
+.book__card-section-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.book__card-section-status {
+  border-bottom: 1px solid #bbb;
+  padding: 1rem 0;
+}
+
+.book__card-section-buttons {
+  padding-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.book__card-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.book__card-year {
+  font-size: 0.95rem;
+  color: #333;
+  background-color: #eee;
+  align-self: center;
+  padding: 0.35rem 0.6rem;
+  border-radius: 0.25rem;
+}
+
+.book__card-author {
+  color: #444;
+}
+
+.book__card-status {
+  padding: 0.35rem 0.6rem;
+  border-radius: 0.25rem;
+}
+
+.book__card-status--pending {
+  background-color: #f8d9c0;
+  color: #ea710d;
+}
+
+.book__card-status--in-progress {
+  background-color: #73d1f9;
+  color: #2522f1;
+}
+
+.book__card-status--read {
+  background-color: #bbf4bb;
+  color: #007b00;
+}

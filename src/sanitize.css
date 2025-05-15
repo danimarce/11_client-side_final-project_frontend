@@ -4,3 +4,8 @@
   box-sizing: border-box;
   font-family: Calibri, sans-serif;
 }
+
+ul {
+  list-style: none;
+  padding: 0;
+}

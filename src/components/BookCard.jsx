@@ -1,3 +1,5 @@
+import styles from "./BookCard.module.css";
+
 const BASE_URL = import.meta.env.VITE_API_URL;
 
 export const BookCard = ({
@@ -33,19 +35,31 @@ export const BookCard = ({
       });
   };
 
+  const cardStatusStyles = {
+    pending: "book__card-status--pending",
+    read: "book__card-status--read",
+    "in progress": "book__card-status--in-progress"
+  };
+
   return (
-    <li>
-      <section>
-        <header>
-          <h3>{title}</h3>
-          <span>{year}</span>
+    <li className={styles["book__card"]}>
+      <section className={styles["book__card-first-section"]}>
+        <header className={styles["book__card-section-header"]}>
+          <h3 className={styles["book__card-title"]}>{title}</h3>
+          <span className={styles["book__card-year"]}>{year}</span>
         </header>
-        <p>{author}</p>
+        <p className={styles["book__card-author"]}>{author}</p>
       </section>
-      <section>
-        <span>{status}</span>
+      <section className={styles["book__card-section-status"]}>
+        <span
+          className={`${styles["book__card-status"]} ${
+            styles[cardStatusStyles[status]]
+          }`}
+        >
+          {status}
+        </span>
       </section>
-      <section>
+      <section className={styles["book__card-section-buttons"]}>
         <button onClick={() => handleBookEdit(id)}>Edit</button>
         <button onClick={() => handleDeleteButton(id)}>Delete</button>
       </section>

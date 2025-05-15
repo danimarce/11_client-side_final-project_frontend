@@ -1,4 +1,5 @@
 import { BookCard } from "./BookCard";
+import styles from "./BooksContainer.module.css"
 
 export const BooksContainer = ({
   books,
@@ -9,7 +10,7 @@ export const BooksContainer = ({
 }) => {
   
   return (
-    <ul>
+    <ul className={styles["books__container"]}>
       {books.map((book) => (
         <BookCard
           key={book.id}

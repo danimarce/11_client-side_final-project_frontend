@@ -1,0 +1,7 @@
+.books__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
+  gap: 1rem;
+  place-items: center;
+  width: 100%;
+}
