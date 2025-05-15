@@ -17,7 +17,7 @@
 
 .book__card-section-status {
   border-bottom: 1px solid #bbb;
-  padding: 1rem 0;
+  padding: 1.25rem 0;
 }
 
 .book__card-section-buttons {
@@ -62,4 +62,14 @@
 .book__card-status--read {
   background-color: #bbf4bb;
   color: #007b00;
+}
+.book__card-button {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+  font-size: 1.15rem;
+}
+
+.book_card-delete-button {
+  background-color: #fdbcbc;
+  color: #5b0101;
 }

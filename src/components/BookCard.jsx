@@ -60,8 +60,8 @@ export const BookCard = ({
         </span>
       </section>
       <section className={styles["book__card-section-buttons"]}>
-        <button onClick={() => handleBookEdit(id)}>Edit</button>
-        <button onClick={() => handleDeleteButton(id)}>Delete</button>
+        <button className={styles["book__card-button"]} onClick={() => handleBookEdit(id)}>Edit</button>
+        <button className={`${styles["book__card-button"]} ${styles["book_card-delete-button"]}`} onClick={() => handleDeleteButton(id)}>Delete</button>
       </section>
     </li>
   );
