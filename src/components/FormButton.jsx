@@ -1,3 +1,5 @@
+import styles from "./FormButton.module.css"
+
 export const FormButton = ({ textButton, handleClick }) => {
-  return <button onClick={handleClick}>{textButton}</button>;
+  return <button className={styles["form__button"]} onClick={handleClick}>{textButton}</button>;
 };
