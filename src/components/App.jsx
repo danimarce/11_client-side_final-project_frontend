@@ -5,6 +5,7 @@ import { FormButton } from "./FormButton";
 import { FormContainer } from "./FormContainer";
 
 import { useTextSubmitButton } from "../hooks/useTextSubmitButton.js";
+import { PageHeader } from "./PageHeader.jsx";
 
 const BASE_URL = import.meta.env.VITE_API_URL;
 
@@ -51,8 +52,10 @@ export const App = () => {
 
   return (
     <>
-      <HeadingTitle title="My Book Collection" />
-      <FormButton textButton={textButton} handleClick={handleTextButton} />
+      <PageHeader>
+        <HeadingTitle title="My Book Collection" />
+        <FormButton textButton={textButton} handleClick={handleTextButton} />
+      </PageHeader>
       {(textButton === "Cancel" || bookId) && (
         <FormContainer
           bookId={bookId}

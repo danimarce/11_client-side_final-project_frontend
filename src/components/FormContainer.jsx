@@ -118,45 +118,51 @@ export const FormContainer = ({
           required
         />
       </label>
-      <label className={styles["form__label"]} htmlFor="publicationYear">
-        Publication Year
-        <input
-          type="text"
-          name="publicationYear"
-          id="publicationYear"
-          className={styles["form__input"]}
-          value={book.year ?? ""}
-          onChange={(event) =>
-            setBook((prevBook) => ({
-              ...prevBook,
-              year: event.target.value,
-            }))
-          }
-          required
-        />
-      </label>
-      <label className={styles["form__label"]} htmlFor="readingStatus">
-        Reading Status
-        <select
-          name="readingStatus"
-          id="readingStatus"
-          value={book.status ?? ""}
-          className={styles["form__input"]}
-          onChange={(event) =>
-            setBook((prevBook) => ({
-              ...prevBook,
-              status: event.target.value,
-            }))
-          }
-          required
-        >
-          <option value="pending">Pending</option>
-          <option value="in progress">In Progress</option>
-          <option value="read">Read</option>
-        </select>
-      </label>
+      <div className={styles["form__year-status-wrapper"]}>
+        <label className={styles["form__label"]} htmlFor="publicationYear">
+          Publication Year
+          <input
+            type="text"
+            name="publicationYear"
+            id="publicationYear"
+            className={styles["form__input"]}
+            value={book.year ?? ""}
+            onChange={(event) =>
+              setBook((prevBook) => ({
+                ...prevBook,
+                year: event.target.value,
+              }))
+            }
+            required
+          />
+        </label>
+        <label className={styles["form__label"]} htmlFor="readingStatus">
+          Reading Status
+          <select
+            name="readingStatus"
+            id="readingStatus"
+            value={book.status ?? ""}
+            className={styles["form__input"]}
+            onChange={(event) =>
+              setBook((prevBook) => ({
+                ...prevBook,
+                status: event.target.value,
+              }))
+            }
+            required
+          >
+            <option value="pending">Pending</option>
+            <option value="in progress">In Progress</option>
+            <option value="read">Read</option>
+          </select>
+        </label>
+      </div>
       <input type="hidden" name="id" defaultValue={book.id} />
-      <input className={styles["form__submit-button"]} type="submit" value={textSubmitButton} />
+      <input
+        className={styles["form__submit-button"]}
+        type="submit"
+        value={textSubmitButton}
+      />
     </form>
   );
 };
