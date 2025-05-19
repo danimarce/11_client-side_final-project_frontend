@@ -9,6 +9,7 @@ export const FormContainer = ({
   fetchBooks,
   textSubmitButton,
   setTextSubmitButton,
+  setIsLoading,
 }) => {
   const [book, setBook] = useState({
     title: "",
@@ -34,6 +35,7 @@ export const FormContainer = ({
     event.preventDefault();
 
     setTextSubmitButton("Saving...");
+    setIsLoading(true);
 
     const formData = new FormData(event.target);
 

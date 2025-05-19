@@ -5,6 +5,7 @@ import { FormContainer } from "./FormContainer";
 import { PageHeader } from "./PageHeader.jsx";
 import { useTextButton, useTextSubmitButton } from "../hooks/useTextButtons.js";
 import { useBookId, useBooks, useFetchBooks } from "../hooks/useBooks.js";
+import { useLoading } from "../hooks/useLoading.js";
 
 const BASE_URL = import.meta.env.VITE_API_URL;
 
@@ -14,6 +15,7 @@ export const App = () => {
   const { textButton, handleEditButton, handleTextButton } =
     useTextButton(setBookId);
   const { textSubmitButton, setTextSubmitButton } = useTextSubmitButton(bookId);
+  const { isLoading, setIsLoading } = useLoading(true);
 
   const fetchBooks = () => {
     const endpointUrl = `${BASE_URL}/books`;
@@ -25,10 +27,11 @@ export const App = () => {
       })
       .then((data) => {
         setBooks(data);
+        setIsLoading(false);
       });
   };
 
-  useFetchBooks(fetchBooks);
+  useFetchBooks(fetchBooks, setIsLoading);
 
   return (
     <>
@@ -43,6 +46,7 @@ export const App = () => {
           fetchBooks={fetchBooks}
           textSubmitButton={textSubmitButton}
           setTextSubmitButton={setTextSubmitButton}
+          setIsLoading={setIsLoading}
         />
       )}
       <BooksContainer
@@ -51,6 +55,8 @@ export const App = () => {
         handleEditButton={handleEditButton}
         fetchBooks={fetchBooks}
         setTextSubmitButton={setTextSubmitButton}
+        isLoading={isLoading}
+        setIsLoading={setIsLoading}
       />
     </>
   );

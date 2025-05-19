@@ -8,6 +8,7 @@ export const BookCard = ({
   handleEditButton,
   fetchBooks,
   setTextSubmitButton,
+  setIsLoading,
 }) => {
   const { id, title, author, year, status } = book;
 
@@ -21,6 +22,8 @@ export const BookCard = ({
     const deleteBook = confirm("Are you sure you want to delete this book?");
 
     if (!deleteBook) return;
+
+    setIsLoading(true);
 
     globalThis
       .fetch(`${BASE_URL}/books/${id}`, {
@@ -38,7 +41,7 @@ export const BookCard = ({
   const cardStatusStyles = {
     pending: "book__card-status--pending",
     read: "book__card-status--read",
-    "in progress": "book__card-status--in-progress"
+    "in progress": "book__card-status--in-progress",
   };
 
   return (
@@ -60,8 +63,18 @@ export const BookCard = ({
         </span>
       </section>
       <section className={styles["book__card-section-buttons"]}>
-        <button className={styles["book__card-button"]} onClick={() => handleBookEdit(id)}>Edit</button>
-        <button className={`${styles["book__card-button"]} ${styles["book_card-delete-button"]}`} onClick={() => handleDeleteButton(id)}>Delete</button>
+        <button
+          className={styles["book__card-button"]}
+          onClick={() => handleBookEdit(id)}
+        >
+          Edit
+        </button>
+        <button
+          className={`${styles["book__card-button"]} ${styles["book_card-delete-button"]}`}
+          onClick={() => handleDeleteButton(id)}
+        >
+          Delete
+        </button>
       </section>
     </li>
   );

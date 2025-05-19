@@ -7,8 +7,17 @@ export const BooksContainer = ({
   handleEditButton,
   fetchBooks,
   setTextSubmitButton,
+  isLoading,
+  setIsLoading,
 }) => {
-  
+  if (isLoading) {
+    return (
+      <div className={styles["books__loading"]}>
+        <p>Loading books...</p>
+      </div>
+    );
+  }
+
   return (
     <ul className={styles["books__container"]}>
       {books.map((book) => (
@@ -19,6 +28,7 @@ export const BooksContainer = ({
           handleEditButton={handleEditButton}
           fetchBooks={fetchBooks}
           setTextSubmitButton={setTextSubmitButton}
+          setIsLoading={setIsLoading}
         />
       ))}
     </ul>
