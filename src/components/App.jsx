@@ -1,18 +1,18 @@
-import { useEffect, useState } from "react";
 import { BooksContainer } from "./BooksContainer";
 import { HeadingTitle } from "./HeadingTitle";
 import { FormButton } from "./FormButton";
 import { FormContainer } from "./FormContainer";
-
-import { useTextSubmitButton } from "../hooks/useTextSubmitButton.js";
 import { PageHeader } from "./PageHeader.jsx";
+import { useTextButton, useTextSubmitButton } from "../hooks/useTextButtons.js";
+import { useBookId, useBooks, useFetchBooks } from "../hooks/useBooks.js";
 
 const BASE_URL = import.meta.env.VITE_API_URL;
 
 export const App = () => {
-  const [books, setBooks] = useState([]);
-  const [bookId, setBookId] = useState(null);
-  const [textButton, setTextButton] = useState("Add New Book");
+  const { books, setBooks } = useBooks();
+  const { bookId, setBookId } = useBookId();
+  const { textButton, handleEditButton, handleTextButton } =
+    useTextButton(setBookId);
   const { textSubmitButton, setTextSubmitButton } = useTextSubmitButton(bookId);
 
   const fetchBooks = () => {
@@ -28,27 +28,7 @@ export const App = () => {
       });
   };
 
-  useEffect(() => {
-    fetchBooks();
-  }, []);
-
-  const handleTextButton = () => {
-    setTextButton((prevText) => {
-      if (prevText === "Cancel") {
-        setBookId(null);
-
-        return "Add New Book";
-      }
-
-      return "Cancel";
-    });
-  };
-
-  const handleEditButton = () => {
-    if (textButton === "Add New Book") {
-      setTextButton("Cancel");
-    }
-  };
+  useFetchBooks(fetchBooks);
 
   return (
     <>
