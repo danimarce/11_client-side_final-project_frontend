@@ -1,25 +1,15 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export const useBooks = () => {
   const [books, setBooks] = useState([]);
 
+  const updateBooks = (updatedBooks) => {
+    setBooks(updatedBooks);
+  };
+
   return {
     books,
     setBooks,
+    updateBooks,
   };
 };
-
-export const useBookId = () => {
-  const [bookId, setBookId] = useState(null);
-
-  return {
-    bookId,
-    setBookId,
-  };
-}
-
-export const useFetchBooks = (fetchBooks) => {
-  useEffect(() => {
-      fetchBooks();
-    }, []);
-}
