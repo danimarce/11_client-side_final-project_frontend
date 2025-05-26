@@ -1,24 +1,12 @@
 import { useState } from "react";
 
-export const useTextSubmitButton = (bookId) => {
-  const INTITIAL_TEXT_BUTTON = bookId ? "Update Book" : "Add Book";
-
-  const [textSubmitButton, setTextSubmitButton] =
-    useState(INTITIAL_TEXT_BUTTON);
-
-  return {
-    textSubmitButton,
-    setTextSubmitButton,
-  };
-};
-
-export const useTextButton = (setBookId) => {
+export const useTextButton = (initBook) => {
   const [textButton, setTextButton] = useState("Add New Book");
 
   const handleTextButton = () => {
     setTextButton((prevText) => {
       if (prevText === "Cancel") {
-        setBookId(null);
+        initBook();
 
         return "Add New Book";
       }
@@ -39,4 +27,4 @@ export const useTextButton = (setBookId) => {
     handleTextButton,
     setTextButton,
   };
-}
+};

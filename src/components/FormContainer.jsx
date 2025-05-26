@@ -1,45 +1,23 @@
-import { useEffect, useState } from "react";
 import styles from "./FormContainer.module.css";
 
 const BASE_URL = import.meta.env.VITE_API_URL;
 
 export const FormContainer = ({
-  bookId,
+  book,
+  updateBookField,
   handleTextButton,
   fetchBooks,
   textSubmitButton,
   setTextSubmitButton,
-  setIsLoading,
+  updateLoading,
 }) => {
-  const [book, setBook] = useState({
-    title: "",
-    author: "",
-    year: "",
-    status: "pending",
-  });
-
-  useEffect(() => {
-    if (bookId) {
-      globalThis
-        .fetch(`${BASE_URL}/books/${bookId}`)
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          setBook(data);
-        });
-    }
-  }, [bookId]);
-
   const handleSubmit = (event) => {
     event.preventDefault();
 
     setTextSubmitButton("Saving...");
-    setIsLoading(true);
+    updateLoading(true);
 
-    const formData = new FormData(event.target);
-
-    const formId = formData.get("id");
+    const formId = book.id;
     const formTitle = book.title;
     const formAuthor = book.author;
     const formYear = book.year;
@@ -52,15 +30,13 @@ export const FormContainer = ({
       status: formStatus,
     };
 
-    const urlEndpoint = formId
-      ? `${BASE_URL}/books/${formId}`
-      : `${BASE_URL}/books`;
+    const urlEndpoint =
+      formId !== 0 ? `${BASE_URL}/books/${formId}` : `${BASE_URL}/books`;
 
-    const usedMethod = formId ? "PUT" : "POST";
+    const usedMethod = formId !== 0 ? "PUT" : "POST";
 
-    const alertText = formId
-      ? "Book updated succesfully!"
-      : "Book added succesfully";
+    const alertText =
+      formId !== 0 ? "Book updated succesfully!" : "Book added succesfully";
 
     globalThis
       .fetch(urlEndpoint, {
@@ -94,12 +70,7 @@ export const FormContainer = ({
           id="title"
           className={styles["form__input"]}
           value={book.title ?? ""}
-          onChange={(event) =>
-            setBook((prevBook) => ({
-              ...prevBook,
-              title: event.target.value,
-            }))
-          }
+          onChange={(event) => updateBookField("title", event.target.value)}
           required
         />
       </label>
@@ -111,12 +82,7 @@ export const FormContainer = ({
           id="author"
           className={styles["form__input"]}
           value={book.author ?? ""}
-          onChange={(event) =>
-            setBook((prevBook) => ({
-              ...prevBook,
-              author: event.target.value,
-            }))
-          }
+          onChange={(event) => updateBookField("author", event.target.value)}
           required
         />
       </label>
@@ -129,12 +95,7 @@ export const FormContainer = ({
             id="publicationYear"
             className={styles["form__input"]}
             value={book.year ?? ""}
-            onChange={(event) =>
-              setBook((prevBook) => ({
-                ...prevBook,
-                year: event.target.value,
-              }))
-            }
+            onChange={(event) => updateBookField("year", event.target.value)}
             required
           />
         </label>
@@ -146,10 +107,7 @@ export const FormContainer = ({
             value={book.status ?? ""}
             className={styles["form__input"]}
             onChange={(event) =>
-              setBook((prevBook) => ({
-                ...prevBook,
-                status: event.target.value,
-              }))
+              updateBookField("status", event.target.value)
             }
             required
           >
@@ -159,7 +117,6 @@ export const FormContainer = ({
           </select>
         </label>
       </div>
-      <input type="hidden" name="id" defaultValue={book.id} />
       <input
         className={styles["form__submit-button"]}
         type="submit"

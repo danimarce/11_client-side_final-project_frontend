@@ -1,15 +1,44 @@
 import { useState } from "react";
 
-export const useBookId = () => {
-  const [bookId, setBookId] = useState({});
+const BASE_URL = import.meta.env.VITE_API_URL;
 
-  const updateBook = (updatedBook) => {
-    setBookId(updatedBook)
+export const useBook = () => {
+  const INITIAL_BOOK = {
+    id: 0,
+    title: "",
+    author: "",
+    year: "",
+    status: "pending",
+  };
+
+  const [book, setBook] = useState(INITIAL_BOOK);
+
+  const initBook = () => {
+    setBook(INITIAL_BOOK);
+  };
+
+  const updateBook = (bookId) => {
+    globalThis
+      .fetch(`${BASE_URL}/books/${bookId}`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((bookData) => {
+        setBook(bookData);
+      });
+  };
+
+  const updateBookField = (field, value) => {
+    setBook((prevBook) => ({
+      ...prevBook,
+      [field]: value,
+    }));
   }
 
   return {
-    bookId,
-    setBookId,
-    updateBook
+    book,
+    updateBook,
+    initBook,
+    updateBookField,
   };
 };

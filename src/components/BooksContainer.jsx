@@ -3,12 +3,12 @@ import styles from "./BooksContainer.module.css"
 
 export const BooksContainer = ({
   books,
-  setBookId,
+  updateBook,
   handleEditButton,
   fetchBooks,
   setTextSubmitButton,
   isLoading,
-  setIsLoading,
+  updateLoading,
 }) => {
   if (isLoading) {
     return (
@@ -24,11 +24,11 @@ export const BooksContainer = ({
         <BookCard
           key={book.id}
           book={book}
-          setBookId={setBookId}
+          updateBook={updateBook}
           handleEditButton={handleEditButton}
           fetchBooks={fetchBooks}
           setTextSubmitButton={setTextSubmitButton}
-          setIsLoading={setIsLoading}
+          updateLoading={updateLoading}
         />
       ))}
     </ul>

@@ -4,17 +4,17 @@ const BASE_URL = import.meta.env.VITE_API_URL;
 
 export const BookCard = ({
   book,
-  setBookId,
+  updateBook,
   handleEditButton,
   fetchBooks,
   setTextSubmitButton,
-  setIsLoading,
+  updateLoading,
 }) => {
   const { id, title, author, year, status } = book;
 
   const handleBookEdit = (id) => {
     setTextSubmitButton("Update book");
-    setBookId(id);
+    updateBook(id);
     handleEditButton();
   };
 
@@ -23,7 +23,7 @@ export const BookCard = ({
 
     if (!deleteBook) return;
 
-    setIsLoading(true);
+    updateLoading(true);
 
     globalThis
       .fetch(`${BASE_URL}/books/${id}`, {
