@@ -8,13 +8,13 @@ export const FormContainer = ({
   handleTextButton,
   fetchBooks,
   textSubmitButton,
-  setTextSubmitButton,
+  updateTextSubmitButton,
   updateLoading,
 }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    setTextSubmitButton("Saving...");
+    updateTextSubmitButton("Saving...");
     updateLoading(true);
 
     const formId = book.id;
@@ -50,7 +50,7 @@ export const FormContainer = ({
         return response.json();
       })
       .then(() => {
-        setTextSubmitButton("Add book");
+        updateTextSubmitButton("Add book");
         handleTextButton();
         fetchBooks();
         alert(alertText);

@@ -6,7 +6,6 @@ export const BooksContainer = ({
   updateBook,
   handleEditButton,
   fetchBooks,
-  setTextSubmitButton,
   isLoading,
   updateLoading,
 }) => {
@@ -27,7 +26,6 @@ export const BooksContainer = ({
           updateBook={updateBook}
           handleEditButton={handleEditButton}
           fetchBooks={fetchBooks}
-          setTextSubmitButton={setTextSubmitButton}
           updateLoading={updateLoading}
         />
       ))}

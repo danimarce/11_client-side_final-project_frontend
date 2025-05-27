@@ -11,8 +11,12 @@ export const useTextSubmitButton = (bookId) => {
     setTextSubmitButton(getInitialText(bookId));
   }, [bookId]);
 
+  const updateTextSubmitButton = (textButton) => {
+    setTextSubmitButton(textButton);
+  }
+
   return {
     textSubmitButton,
-    setTextSubmitButton,
+    updateTextSubmitButton,
   };
 };

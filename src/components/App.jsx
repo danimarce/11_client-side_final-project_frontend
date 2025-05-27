@@ -15,7 +15,7 @@ export const App = () => {
   const { book, updateBook, initBook, updateBookField } = useBook();
   const { textButton, handleEditButton, handleTextButton } =
     useTextButton(initBook);
-  const { textSubmitButton, setTextSubmitButton } = useTextSubmitButton(
+  const { textSubmitButton, updateTextSubmitButton } = useTextSubmitButton(
     book["id"]
   );
   const { isLoading, updateLoading } = useLoading(true);
@@ -35,7 +35,7 @@ export const App = () => {
           handleTextButton={handleTextButton}
           fetchBooks={fetchBooks}
           textSubmitButton={textSubmitButton}
-          setTextSubmitButton={setTextSubmitButton}
+          updateTextSubmitButton={updateTextSubmitButton}
           updateLoading={updateLoading}
         />
       )}
@@ -44,7 +44,6 @@ export const App = () => {
         updateBook={updateBook}
         handleEditButton={handleEditButton}
         fetchBooks={fetchBooks}
-        setTextSubmitButton={setTextSubmitButton}
         isLoading={isLoading}
         updateLoading={updateLoading}
       />

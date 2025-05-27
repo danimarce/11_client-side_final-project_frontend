@@ -7,13 +7,11 @@ export const BookCard = ({
   updateBook,
   handleEditButton,
   fetchBooks,
-  setTextSubmitButton,
   updateLoading,
 }) => {
   const { id, title, author, year, status } = book;
 
   const handleBookEdit = (id) => {
-    setTextSubmitButton("Update book");
     updateBook(id);
     handleEditButton();
   };
