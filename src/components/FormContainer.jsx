@@ -69,7 +69,7 @@ export const FormContainer = ({
           name="title"
           id="title"
           className={styles["form__input"]}
-          value={book.title ?? ""}
+          value={book.title}
           onChange={(event) => updateBookField("title", event.target.value)}
           required
         />
@@ -81,7 +81,7 @@ export const FormContainer = ({
           name="author"
           id="author"
           className={styles["form__input"]}
-          value={book.author ?? ""}
+          value={book.author}
           onChange={(event) => updateBookField("author", event.target.value)}
           required
         />
@@ -94,7 +94,7 @@ export const FormContainer = ({
             name="publicationYear"
             id="publicationYear"
             className={styles["form__input"]}
-            value={book.year ?? ""}
+            value={book.year}
             onChange={(event) => updateBookField("year", event.target.value)}
             required
           />
@@ -104,7 +104,7 @@ export const FormContainer = ({
           <select
             name="readingStatus"
             id="readingStatus"
-            value={book.status ?? ""}
+            value={book.status}
             className={styles["form__input"]}
             onChange={(event) =>
               updateBookField("status", event.target.value)
