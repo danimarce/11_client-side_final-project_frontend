@@ -7,7 +7,7 @@ export const useBook = () => {
     id: 0,
     title: "",
     author: "",
-    year: "",
+    year: 2025,
     status: "pending",
   };
 

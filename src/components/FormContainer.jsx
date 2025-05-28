@@ -70,6 +70,7 @@ export const FormContainer = ({
           name="title"
           id="title"
           className={styles["form__input"]}
+          placeholder="Enter book title"
           value={book.title}
           onChange={(event) => updateBookField("title", event.target.value)}
           required
@@ -82,6 +83,7 @@ export const FormContainer = ({
           name="author"
           id="author"
           className={styles["form__input"]}
+          placeholder="Enter author name"
           value={book.author}
           onChange={(event) => updateBookField("author", event.target.value)}
           required
