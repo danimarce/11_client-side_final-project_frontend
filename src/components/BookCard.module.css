@@ -6,7 +6,7 @@
 }
 
 .book__card-first-section {
-  border-bottom: 1px solid #bbb;
+  
   padding-bottom: 1rem;
 }
 
@@ -16,7 +16,7 @@
 }
 
 .book__card-section-status {
-  border-bottom: 1px solid #bbb;
+  
   padding: 1.25rem 0;
 }
 
@@ -69,7 +69,14 @@
   font-size: 1.15rem;
 }
 
-.book_card-delete-button {
+.book__card-delete-button {
   background-color: #fdbcbc;
   color: #5b0101;
+}
+
+.book__card-divider {
+  height: 1px;
+  background-color: #bbb;
+  width: calc(100% + 2rem);
+  margin-left: -1rem;
 }

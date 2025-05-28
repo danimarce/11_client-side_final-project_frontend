@@ -51,6 +51,7 @@ export const BookCard = ({
         </header>
         <p className={styles["book__card-author"]}>{author}</p>
       </section>
+      <hr className={styles["book__card-divider"]} />
       <section className={styles["book__card-section-status"]}>
         <span
           className={`${styles["book__card-status"]} ${
@@ -60,6 +61,7 @@ export const BookCard = ({
           {status}
         </span>
       </section>
+      <hr className={styles["book__card-divider"]} />
       <section className={styles["book__card-section-buttons"]}>
         <button
           className={styles["book__card-button"]}
@@ -68,7 +70,7 @@ export const BookCard = ({
           Edit
         </button>
         <button
-          className={`${styles["book__card-button"]} ${styles["book_card-delete-button"]}`}
+          className={`${styles["book__card-button"]} ${styles["book__card-delete-button"]}`}
           onClick={() => handleDeleteButton(id)}
         >
           Delete
