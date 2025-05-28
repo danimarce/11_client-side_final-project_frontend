@@ -7,6 +7,7 @@ export const FormContainer = ({
   updateBookField,
   handleTextButton,
   fetchBooks,
+  textFormTitle,
   textSubmitButton,
   updateTextSubmitButton,
   updateLoading,
@@ -61,7 +62,7 @@ export const FormContainer = ({
 
   return (
     <form className={styles["form__container"]} onSubmit={handleSubmit}>
-      <h3 className={styles["form__title"]}>Add New Book</h3>
+      <h3 className={styles["form__title"]}>{textFormTitle}</h3>
       <label className={styles["form__label"]} htmlFor="title">
         Title
         <input

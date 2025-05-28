@@ -9,12 +9,14 @@ import { useBooks } from "../hooks/useBooks.js";
 import { useLoading } from "../hooks/useLoading.js";
 import { useFetchBooks } from "../hooks/useFetchBooks.js";
 import { useBook } from "../hooks/useBook.js";
+import { useTextFormTitle } from "../hooks/useTextFormTitle.js";
 
 export const App = () => {
   const { books, updateBooks } = useBooks();
   const { book, updateBook, initBook, updateBookField } = useBook();
+  const { textFormTitle, updateFormTitle } = useTextFormTitle();
   const { textButton, handleEditButton, handleTextButton } =
-    useTextButton(initBook);
+    useTextButton(initBook, updateFormTitle);
   const { textSubmitButton, updateTextSubmitButton } = useTextSubmitButton(
     book["id"]
   );
@@ -34,6 +36,7 @@ export const App = () => {
           updateBookField={updateBookField}
           handleTextButton={handleTextButton}
           fetchBooks={fetchBooks}
+          textFormTitle={textFormTitle}
           textSubmitButton={textSubmitButton}
           updateTextSubmitButton={updateTextSubmitButton}
           updateLoading={updateLoading}
