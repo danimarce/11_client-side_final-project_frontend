@@ -1,7 +1,7 @@
 .book__card {
   width: 100%;
   padding: 1rem;
-  border: 1px solid #bbb;
+  border: 1px solid var(--border-grey);
   border-radius: 0.25rem;
 }
 
@@ -33,15 +33,15 @@
 
 .book__card-year {
   font-size: 0.95rem;
-  color: #333;
-  background-color: #eee;
+  color: var(--text-grey-dark);
+  background-color: var(--bg-grey);
   align-self: center;
   padding: 0.35rem 0.6rem;
   border-radius: 0.25rem;
 }
 
 .book__card-author {
-  color: #444;
+  color: var(--text-grey-light);
 }
 
 .book__card-status {
@@ -50,18 +50,18 @@
 }
 
 .book__card-status--pending {
-  background-color: #f8d9c0;
-  color: #ea710d;
+  background-color: var(--bg-orange);
+  color: var(--text-orange);
 }
 
 .book__card-status--in-progress {
-  background-color: #73d1f9;
-  color: #2522f1;
+  background-color: var(--bg-blue);
+  color: var(--text-blue);
 }
 
 .book__card-status--read {
-  background-color: #bbf4bb;
-  color: #007b00;
+  background-color: var(--bg-green-light);
+  color: var(--text-green);
 }
 .book__card-button {
   padding: 0.5rem 0.75rem;
@@ -70,13 +70,13 @@
 }
 
 .book__card-delete-button {
-  background-color: #fdbcbc;
-  color: #5b0101;
+  background-color: var(--bg-red);
+  color: var(--text-red);
 }
 
 .book__card-divider {
   height: 1px;
-  background-color: #bbb;
+  background-color: var(--border-grey);
   width: calc(100% + 2rem);
   margin-left: -1rem;
 }
