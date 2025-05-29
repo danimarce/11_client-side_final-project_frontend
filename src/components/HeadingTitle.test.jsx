@@ -17,4 +17,13 @@ describe("HeadingTitle", () => {
     expect(headingItem.textContent).toBe(expectedText);
     expect(headingItem.tagName).toBe("H1");
   });
+
+  it("should render the correct class", () => {
+    const headingTitle = "My Book Collection";
+
+    const { getByRole } = render(<HeadingTitle title={headingTitle} />);
+    const headingItem = getByRole("heading");
+
+    expect(headingItem.className).toMatch(/heading__title/);
+  });
 });

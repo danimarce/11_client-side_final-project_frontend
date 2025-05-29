@@ -33,4 +33,28 @@ describe("BooksContainer", () => {
     expect(booksItems.length).toBe(expectedNumberOfBooks);
     expect(booksItems[0].tagName).toBe(expectedTagName);
   });
+
+  it("should render the correct class", () => {
+    const mockBooks = [
+      {
+        id: 1,
+        title: "Test",
+        author: "John Doe",
+        year: 2025,
+        status: "pending",
+      },
+      {
+        id: 2,
+        title: "Test",
+        author: "John Doe",
+        year: 2025,
+        status: "read",
+      },
+    ];
+
+    const { getByRole } = render(<BooksContainer books={mockBooks} />);
+    const listItems = getByRole("list");
+
+    expect(listItems.className).toMatch(/books__container/);
+  });
 });
