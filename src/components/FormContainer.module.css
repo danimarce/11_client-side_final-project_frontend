@@ -39,6 +39,10 @@
   align-self: flex-end;
 }
 
+.form__submit-button:hover {
+  cursor: pointer;
+}
+
 @media (min-width: 800px) {
   .form__year-status-wrapper {
     display: flex;

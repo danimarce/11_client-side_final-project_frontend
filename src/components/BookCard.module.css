@@ -6,7 +6,6 @@
 }
 
 .book__card-first-section {
-  
   padding-bottom: 1rem;
 }
 
@@ -16,7 +15,6 @@
 }
 
 .book__card-section-status {
-  
   padding: 1.25rem 0;
 }
 
@@ -67,6 +65,10 @@
   padding: 0.5rem 0.75rem;
   border-radius: 0.25rem;
   font-size: 1.15rem;
+}
+
+.book__card-button:hover {
+  cursor: pointer;
 }
 
 .book__card-delete-button {

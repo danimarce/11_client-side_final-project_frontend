@@ -7,3 +7,7 @@
   margin: 1rem 0;
   width: fit-content;
 }
+
+.form__button:hover {
+  cursor: pointer;
+}
