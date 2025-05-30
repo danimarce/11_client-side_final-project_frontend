@@ -1,0 +1,16 @@
+.books__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: 1rem;
+  place-items: center;
+  width: 100%;
+}
+
+.books__loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5rem;
+  font-weight: 600;
+  font-size: 1.5rem;
+}

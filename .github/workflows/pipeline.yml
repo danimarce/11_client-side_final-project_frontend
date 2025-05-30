@@ -1,0 +1,31 @@
+name: Format & Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize]
+jobs:
+  Tests:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: install node
+        uses: actions/setup-node@v4
+      - name: install dependencies
+        run: npm i
+      - name: execute tests
+        run: npm run test
+  Lint:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: install node
+        uses: actions/setup-node@v4
+      - name: install dependencies
+        run: npm i
+      - name: check format
+        run: npm run format:run

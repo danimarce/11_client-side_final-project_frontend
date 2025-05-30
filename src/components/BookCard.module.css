@@ -1,0 +1,86 @@
+.book__card {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid var(--border-grey);
+  border-radius: 0.25rem;
+}
+
+.book__card-first-section {
+  padding-bottom: 1rem;
+}
+
+.book__card-section-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.book__card-section-status {
+  padding: 1.25rem 0;
+}
+
+.book__card-section-buttons {
+  padding-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.book__card-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.book__card-year {
+  font-size: 0.95rem;
+  color: var(--text-grey-dark);
+  background-color: var(--bg-grey);
+  align-self: center;
+  padding: 0.35rem 0.6rem;
+  border-radius: 0.25rem;
+}
+
+.book__card-author {
+  color: var(--text-grey-light);
+}
+
+.book__card-status {
+  padding: 0.35rem 0.6rem;
+  border-radius: 0.25rem;
+}
+
+.book__card-status--pending {
+  background-color: var(--bg-orange);
+  color: var(--text-orange);
+}
+
+.book__card-status--in-progress {
+  background-color: var(--bg-blue);
+  color: var(--text-blue);
+}
+
+.book__card-status--read {
+  background-color: var(--bg-green-light);
+  color: var(--text-green);
+}
+.book__card-button {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+  font-size: 1.15rem;
+  transition: 0.2s ease-in-out;
+}
+
+.book__card-button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.book__card-delete-button {
+  background-color: var(--bg-red);
+  color: var(--text-red);
+}
+
+.book__card-divider {
+  height: 1px;
+  background-color: var(--border-grey);
+  width: calc(100% + 2rem);
+  margin-left: -1rem;
+}

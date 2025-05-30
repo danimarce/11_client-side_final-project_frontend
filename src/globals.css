@@ -1,0 +1,19 @@
+:root {
+  --text-white: #fff;
+  --text-grey-light: #444;
+  --text-grey-dark: #333;
+  --text-red: #5b0101;
+  --text-orange: #ea710d;
+  --text-blue: #2522f1;
+  --text-green: #007b00;
+  --bg-green-dark: #379237;
+  --bg-grey: #eee;
+  --bg-red: #fdbcbc;
+  --bg-orange: #f8d9c0;
+  --bg-blue: #73d1f9;
+  --bg-green-light: #bbf4bb;
+  --bg-grey-form: #fef7f7;
+  --border-grey: #bbb;
+  --border-grey-form: #939393;
+  --border-green: #379237;
+}
