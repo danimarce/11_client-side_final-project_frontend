@@ -16,6 +16,13 @@ export const useFetchBooks = ({ updateBooks, updateLoading }) => {
       .then((data) => {
         updateBooks(data);
         updateLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching books:", error);
+        alert(
+          "An error occurred while fetching the books. Error: " + error.message
+        );
+        updateLoading(false);
       });
   }, []);
 

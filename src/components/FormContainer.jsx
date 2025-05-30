@@ -55,6 +55,19 @@ export const FormContainer = ({
         handleTextButton();
         fetchBooks();
         alert(alertText);
+      })
+      .catch((error) => {
+        let messageError = "An error occurred: ";
+
+        if (formId !== 0) {
+          messageError = "Error updating book: ";
+        }
+        if (formId === 0) {
+          messageError = "Error adding book: ";
+        }
+
+        console.error(messageError, error);
+        alert(messageError + error.message);
       });
 
     event.target.reset();
@@ -109,9 +122,7 @@ export const FormContainer = ({
             id="readingStatus"
             value={book.status}
             className={styles["form__input"]}
-            onChange={(event) =>
-              updateBookField("status", event.target.value)
-            }
+            onChange={(event) => updateBookField("status", event.target.value)}
             required
           >
             <option value="pending">Pending</option>

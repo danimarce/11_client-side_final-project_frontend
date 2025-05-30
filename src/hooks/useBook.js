@@ -25,6 +25,12 @@ export const useBook = () => {
       })
       .then((bookData) => {
         setBook(bookData);
+      })
+      .catch((error) => {
+        console.error("Error fetching book:", error);
+        alert(
+          "An error occurred while fetching the book. Error: " + error.message
+        );
       });
   };
 
@@ -33,7 +39,7 @@ export const useBook = () => {
       ...prevBook,
       [field]: value,
     }));
-  }
+  };
 
   return {
     book,

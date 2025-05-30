@@ -33,6 +33,12 @@ export const BookCard = ({
       .then(() => {
         alert("Book deleted succesfully!");
         fetchBooks();
+      })
+      .catch((error) => {
+        console.error("Error deleting book:", error);
+        alert(
+          "An error occurred while deleting the book. Error: " + error.message
+        );
       });
   };
 
